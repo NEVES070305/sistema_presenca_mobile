@@ -23,7 +23,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
   // Função para fazer login e armazenar tokens
   const login = async (username: string, password: string) => {
-    await axios.post('https://localhost:44352/v1/login', { username, password }).then((response)=>{
+    await axios.post('https://10.109.25.54:44352/v1/login', { username, password }).then((response)=>{
       console.log(response);
       const { token, refreshToken } = response.data;
       console.log(token);
@@ -75,7 +75,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     return () => clearTimeout(timer);
   }, [accessToken, expiresIn]);
 
-  const isAuthenticated = accessToken !== null;
+  const isAuthenticated = true//accessToken !== null;
 
   return (
     <AuthContext.Provider value={{ accessToken, refreshToken, login, logout, isAuthenticated }}>
